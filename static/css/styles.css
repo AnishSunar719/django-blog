@@ -1,0 +1,28 @@
+body{
+    margin: 0;
+    padding-top:0;
+}
+
+a {
+    text-decoration: none;
+}
+
+.navbar-container{
+    background-color: black;
+    padding-top: 0.5rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-container a,span {
+    color: white;
+}
+
+.left-nav{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}

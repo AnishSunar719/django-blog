@@ -1,0 +1,13 @@
+{% extends 'base.html' %} {% block content %}
+<div class="delete-container">
+	<h1 class="h1-container">Confirm Deletion</h1>
+	<p class="p-container">
+		Are you sure you want to delete the blog "{{blog.title}}"?
+	</p>
+	<form action="" method="post">
+        {% csrf_token %}
+		<input type="submit" value="Yes, delete it" />
+		<a href="{% url 'base:home' %}"><button>Cancel</button></a>
+	</form>
+</div>
+{% endblock content %}

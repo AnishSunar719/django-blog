@@ -1,0 +1,23 @@
+{% extends 'base.html' %} {% block content %}
+<div class="blog-container">
+	{% for blog in blogs %}
+	<div class="blog-card">
+		<div class="blog-card-header">
+			<h4 class="blog-card-date">
+				Posted on: {{blog.created_at | date:"Y/m/d"}}
+			</h4>
+			<h4 class="blog-card-title">{{blog.title}}</h4>
+			<h5 class="blog-card-user">By {{blog.user}}</h5>
+		</div>
+		<div>
+			<p class="blog-card-body">
+				{{blog.description | slice:":200" | add:'...'}}<a
+					href="{% url 'base:detail-page' blog.user blog.id blog.slug %}"
+					>Continue</a
+				>
+			</p>
+		</div>
+	</div>
+	{% endfor %}
+</div>
+{% endblock content %}
