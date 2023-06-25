@@ -1,22 +1,28 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} {% load static %} {% block content %}
 <div class="home-container">
 	<div class="blog-container">
 		{% for blog in blogs %}
 		<div class="blog-card">
-			<div class="blog-card-header">
-				<h4 class="blog-card-date">
-					Posted on: {{blog.created_at | date:"Y/m/d"}}
-				</h4>
-				<h4 class="blog-card-title">{{blog.title}}</h4>
-				<h5 class="blog-card-user">By {{blog.user}}</h5>
+			<div class="blog-card-img-container">
+				<img src="{% static blog.image.url %}" alt="{{blog.title}}" />
 			</div>
 			<div>
-				<p class="blog-card-body">
-					{{blog.description | slice:":200" | add:'...'}}<a
-						href="{% url 'base:detail-page' blog.user blog.id blog.slug %}"
-						>Continue</a
-					>
-				</p>
+				<div class="blog-card-header">
+					<div class="blog-card-title">{{blog.title}}</div>
+
+					<div class="blog-card-date">{{blog.created_at | date:"l F d Y"}}</div>
+					<div class="blog-card-user">
+						<a href="{% url 'base:home' %}?q={{blog.user}}">@{{blog.user}}</a>
+					</div>
+				</div>
+				<div class="blog-card-body">
+					<p>
+						{{blog.description | slice:":200" | add:'... '}}<a
+							href="{% url 'base:detail-page' blog.user blog.id blog.slug %}"
+							><span>Continue</span></a
+						>
+					</p>
+				</div>
 			</div>
 		</div>
 		{% endfor %}

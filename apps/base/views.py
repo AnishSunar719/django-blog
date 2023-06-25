@@ -57,7 +57,7 @@ class HomePage(ListView):
         q = self.request.GET.get('q')
         context['title'] = 'Home'
         if q:
-            context['blogs'] = Blog.objects.filter(title__icontains=q)
+            context['blogs'] = Blog.objects.filter(title__icontains=q) or Blog.objects.filter(user__username__icontains=q)
         else:
             context['blogs'] = Blog.objects.all()
         return context
@@ -90,7 +90,7 @@ class BlogCreateView(LoginRequiredMixin, CreateView):
     
 class UserBlogsView(LoginRequiredMixin, ListView):
     model = Blog
-    template_name='base/user_blogs.html'
+    template_name='base/home.html'
     context_object_name = "blogs"
     
     def get_queryset(self):
@@ -98,7 +98,7 @@ class UserBlogsView(LoginRequiredMixin, ListView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["title"] = 'Your Blogs'
+        context["title"] = 'Blogs'
         return context
 
 class BlogEditView(LoginRequiredMixin,UserPassesTestMixin, UpdateView):

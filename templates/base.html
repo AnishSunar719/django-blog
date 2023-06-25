@@ -8,10 +8,7 @@
 	</head>
 	<body>
 		<div class="main-container">
-			{% include 'navbar.html' %}
-			<div class="content-container">
-				{% block content %}{% endblock content %}
-			</div>
+			{% include 'navbar.html' %} {% block content %}{% endblock content %}
 		</div>
 	</body>
 </html>

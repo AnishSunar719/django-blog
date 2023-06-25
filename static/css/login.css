@@ -1,0 +1,32 @@
+*{
+    margin: 0 auto;
+    padding: 0;
+
+}
+
+input[type='submit']{
+    margin: 1rem 0;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+
+.container{
+    margin-top: 6rem;
+    width: 100vw;
+    text-align: center;
+}
+
+.login-form {
+    border: 1px solid black;
+    padding-bottom: 5rem;
+    max-width: 30rem;
+}
+
+.login-header{
+    padding: 2rem;
+    font-weight: 600;
+    font-size: 3rem;
+    text-shadow: 4px 4px 1px chocolate;
+}
+
